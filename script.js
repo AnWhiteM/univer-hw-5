@@ -1,86 +1,41 @@
-//Task 1
-// function showMessage() {
-//   console.log("Привет мир!");
-// }
+var ulElement = document.querySelector("#container ul");
+var secondLiElement = ulElement.querySelector("li:nth-child(2)");
 
-// setTimeout(showMessage, 2000);
+var newLiElement = document.createElement("li");
+newLiElement.textContent = "Пункт 4";
 
-//Task 2
+ulElement.appendChild(newLiElement);
 
-// var person = {
-//   firstName: "John",
-//   lastName: "Cramer",
-// };
+function changeColor() {
+  var colorDiv = document.getElementById("colorDiv");
+  var randomColor = getRandomColor();
+  colorDiv.style.backgroundColor = randomColor;
+}
 
-// function greet(message) {
-//   console.log(`Привет, ${this.firstName} ${this.lastName}! ${message}`);
-// }
-// greet.call(person, "Как дела?");
-// greet.apply(person, ["Как дела?"]);
+function getRandomColor() {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
-// var greetPerson = greet.bind(person);
-// greetPerson("Как дела?");
+function displayWindowSize() {
+  var windowWidth = window.innerWidth;
+  var windowHeight = window.innerHeight;
 
-//Task 3
-// class Car {
-//   constructor(make, model, year) {
-//     this.make = make;
-//     this.model = model;
-//     this.year = year;
-//   }
-//   start() {
-//     console.log(
-//       `Автомобиль ${this.year} ${this.make} ${this.model} запускается.`
-//     );
-//   }
-// }
-// const myCar = new Car("Toyota", "Camry", 2022);
-// myCar.start();
+  var sizeDisplay = document.getElementById("sizeDisplay");
+  sizeDisplay.innerHTML =
+    "Ширина окна: " + windowWidth + "px, Высота окна: " + windowHeight + "px";
+}
 
-//Task 4
-// function fetchData() {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       const success = true;
+window.onload = displayWindowSize;
 
-//       if (success) {
-//         resolve("Данные успешно получены.");
-//       } else {
-//         reject("Не удалось получить данные.");
-//       }
-//     }, 2000);
-//   });
-// }
+window.onresize = displayWindowSize;
 
-// fetchData()
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
-
-//Task 5
-// function fetchData() {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       const success = true;
-
-//       if (success) {
-//         resolve("Данные успешно получены.");
-//       } else {
-//         reject("Не удалось получить данные.");
-//       }
-//     }, 2000);
-//   });
-// }
-// async function fetchDataAsync() {
-//   try {
-//     const data = await fetchData();
-//     console.log(data);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-// fetchDataAsync();
+document.getElementById("myForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+  console.log("Действие по умолчанию предотвращено!");
+  alert("Действие по умолчанию предотвращено!");
+});

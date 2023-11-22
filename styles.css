@@ -1,0 +1,11 @@
+#colorDiv {
+  width: 200px;
+  height: 100px;
+  border: 1px solid #000;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+#sizeDisplay {
+  margin-top: 20px;
+}
